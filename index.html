@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M9</title>
+    <style>
+        /* Estilos para la página */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            text-align: center;
+            padding-top: 50px;
+        }
+
+        #playButton {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #ff0000;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+        }
+
+        video {
+            display: block;
+            margin: 0 auto;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+    <audio id="myAudio" autoplay loop>
+        <source src="song.mp3" type="audio/mpeg">
+    </audio>
+</head>
+<body>
+    <div id="container">
+        <video id="myVideo" width="309.5" height="413"  autoplay loop>
+            <source src="img/video.mp4" type="video/mp4">
+            Tu navegador no soporta el elemento de video.
+        </video>
+        <button id="playButton" onclick="playMusic()">Tocame</button>
+    </div>
+
+    <script>
+        function playMusic() {
+            // Obtener el elemento de audio
+            var audio = document.getElementById("myAudio");
+            var video = document.getElementById("myVideo");
+            
+            // Reproducir la música
+            audio.play();
+            video.play();
+
+            
+            // Ocultar el botón al hacer clic
+            var button = document.getElementById("playButton");
+            button.style.display = "none";
+        }
+    </script>
+</body>
+</html>
