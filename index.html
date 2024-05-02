@@ -30,6 +30,7 @@
             margin: 0 auto;
             border-radius: 10px;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            pointer-events: none; /* Desactivar eventos de puntero */
         }
     </style>
     <audio id="myAudio" autoplay loop>
@@ -38,7 +39,7 @@
 </head>
 <body>
     <div id="container">
-        <video id="myVideo" width="309.5" height="413"  autoplay loop>
+        <video id="myVideo" width="309.5" height="413" autoplay loop>
             <source src="img/video.mp4" type="video/mp4">
             Tu navegador no soporta el elemento de video.
         </video>
@@ -55,7 +56,6 @@
             audio.play();
             video.play();
 
-            
             // Ocultar el botón al hacer clic
             var button = document.getElementById("playButton");
             button.style.display = "none";
