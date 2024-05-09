@@ -30,8 +30,23 @@
             margin: 0 auto;
             border-radius: 10px;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-            pointer-events: none; /* Desactivar eventos de puntero */
         }
+
+
+        #textContainer {
+    display: none;
+    font-size: 18px; /* Tamaño de fuente reducido */
+    max-width: 500px; /* Ancho máximo ajustado al 80% del contenedor */
+    margin: 20px auto; /* Centra el texto horizontalmente */
+    line-height: 1.6; /* Espacio entre líneas aumentado */
+    text-align: center; /* Alineación justificada para un aspecto más limpio */
+    color: #ff0000; /* Color del texto (rojo) */
+    padding: 20px; /* Espacio interno para mejor legibilidad */
+    background-color: #fff; /* Fondo blanco */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
     </style>
     <audio id="myAudio" autoplay loop>
         <source src="song.mp3" type="audio/mpeg">
@@ -44,22 +59,45 @@
             Tu navegador no soporta el elemento de video.
         </video>
         <button id="playButton" onclick="playMusic()">Tocame</button>
+        <p id="textContainer"></p>
     </div>
 
     <script>
-        function playMusic() {
-            // Obtener el elemento de audio
+       function playMusic() {
+            // Obtener el elemento de audio y video
             var audio = document.getElementById("myAudio");
             var video = document.getElementById("myVideo");
-            
-            // Reproducir la música
+
+            // Reproducir la música y el video
             audio.play();
             video.play();
 
             // Ocultar el botón al hacer clic
             var button = document.getElementById("playButton");
             button.style.display = "none";
+
+            // Mostrar el texto después de 3 segundos
+            setTimeout(function() {
+                var textContainer = document.getElementById("textContainer");
+                textContainer.style.display = "block";
+
+                // Definir el texto a mostrar palabra por palabra
+                var text = "Hola mi María preciosa, ya son dos meses contigo formando una bonita relación, me alegra mucho porque sé que esto solo es el comienzo y lo nuestro será eterno mi amor. Quiero agradecerte por tu cariño, comprensión y sobre todo por ser como eres, tienes muchas cualidades que valoro de ti, eres fuerte y muy capaz, estoy muy orgulloso de ti por la gran persona que eres y porque a pesar de todo siempre estás ahí con una sonrisa. Recuerda que me tienes para conversar de lo que sea o para pasar el rato, te adoro mi amor eres increíble y jamás lo dudes. TE QUIERO MUCHOOOO.";
+                var words = text.split(" ");
+
+                // Función para mostrar palabras una por una con intervalo de tiempo
+                var i = 0;
+                var interval = setInterval(function() {
+                    if (i < words.length) {
+                        textContainer.textContent += words[i] + " ";
+                        i++;
+                    } else {
+                        clearInterval(interval); // Detener el intervalo después de mostrar todas las palabras
+                    }
+                }, 300); // Intervalo de 300 milisegundos entre cada palabra
+            }, 2000); // Esperar 2 segundos antes de mostrar el texto
         }
     </script>
 </body>
 </html>
+
